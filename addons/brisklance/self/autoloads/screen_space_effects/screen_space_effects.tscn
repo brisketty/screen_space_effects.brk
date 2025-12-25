@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c30258285y4nu"]
+
+[ext_resource type="Script" uid="uid://b0kjrqo3xbwce" path="res://addons/brisklance/self/autoloads/screen_space_effects/screen_space_effects.gd" id="1_0s5h6"]
+[ext_resource type="PackedScene" uid="uid://p4j3e61sg5oq" path="res://addons/brisklance/self/autoloads/screen_space_effects/circular_blur/circular_blur.tscn" id="2_nujk0"]
+[ext_resource type="PackedScene" uid="uid://cn4pbcoubhbdr" path="res://addons/brisklance/self/autoloads/screen_space_effects/circular_cover/circular_cover.tscn" id="3_q3kge"]
+[ext_resource type="Script" uid="uid://25fiw3u2e24x" path="res://addons/brisklance/self/autoloads/screen_space_effects/distortion/distortions.gd" id="5_45p04"]
+
+[node name="ScreenSpaceEffects" type="CanvasLayer" node_paths=PackedStringArray("node_blur", "node_cover", "node_distortions")]
+layer = 100
+script = ExtResource("1_0s5h6")
+node_blur = NodePath("CircularBlur")
+node_cover = NodePath("CircularCover")
+node_distortions = NodePath("Distortions")
+
+[node name="CircularBlur" parent="." instance=ExtResource("2_nujk0")]
+
+[node name="CircularCover" parent="." instance=ExtResource("3_q3kge")]
+
+[node name="Distortions" type="Node" parent="."]
+script = ExtResource("5_45p04")

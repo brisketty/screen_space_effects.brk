@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct1hnucxq65re"]
+
+[ext_resource type="Texture2D" uid="uid://dbqlcku17p7m" path="res://icon.svg" id="1_44ine"]
+[ext_resource type="Script" uid="uid://rrljse173yso" path="res://scenes/secondary/secondary.gd" id="1_okn2p"]
+
+[node name="Secondary" type="Node"]
+script = ExtResource("1_okn2p")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(338, 254)
+scale = Vector2(4.75, 3.515625)
+texture = ExtResource("1_44ine")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(-380, -248)
+scale = Vector2(4.75, 3.515625)
+texture = ExtResource("1_44ine")
+
+[node name="Camera2D" type="Camera2D" parent="."]

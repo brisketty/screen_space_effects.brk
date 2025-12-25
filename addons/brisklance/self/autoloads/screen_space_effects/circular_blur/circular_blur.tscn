@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://p4j3e61sg5oq"]
+
+[ext_resource type="Script" uid="uid://dx8ffphbxighg" path="res://addons/brisklance/self/autoloads/screen_space_effects/circular_blur/circular_blur.gd" id="1_i525n"]
+[ext_resource type="Shader" uid="uid://f5oclfecvban" path="res://addons/brisklance/self/autoloads/screen_space_effects/circular_blur/circular_blur.gdshader" id="2_hjyqy"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+resource_local_to_scene = true
+shader = ExtResource("2_hjyqy")
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+shader_parameter/blur_intensity = 5.0
+shader_parameter/blur_size = 1.0
+shader_parameter/blur_scatter_intensity = 1.0
+
+[node name="CircularBlur" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i525n")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+scale = Vector2(5, 5)
+copy_mode = 2
+
+[node name="Effect" type="ColorRect" parent="."]
+material = SubResource("1")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0

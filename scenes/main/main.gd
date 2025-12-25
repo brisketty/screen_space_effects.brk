@@ -1,0 +1,16 @@
+extends Node
+
+@export_file("*.tscn") var next_target_scene : String
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	var a := false
+	
+	for i in 5:
+		await get_tree().create_timer(1).timeout
+		ScreenSpaceEffects.node_distortions.play(Vector2.ZERO, 1)
+		ScreenSpaceEffects.node_cover.cover(0.5, 0.4 if a else 0.0)
+		await ScreenSpaceEffects.node_blur.blur(0.2, 0.7 if a else 0.0)
+		a = not a
+	
+	ScreenSpaceEffects.transition_scene_to_file(next_target_scene)

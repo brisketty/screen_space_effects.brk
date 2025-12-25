@@ -10,13 +10,18 @@ config_version=5
 
 [application]
 
-config/name="Brisklance"
+config/name="Screen Space Effect"
+run/main_scene="uid://m03tok204gtj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ScreenSpaceEffects="*res://addons/brisklance/self/./autoloads/screen_space_effects/screen_space_effects.tscn"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/brisklance/manager/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg")
+enabled=PackedStringArray("res://addons/brisklance/manager/plugin.cfg", "res://addons/brisklance/self/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg")
 
 [rendering]
 

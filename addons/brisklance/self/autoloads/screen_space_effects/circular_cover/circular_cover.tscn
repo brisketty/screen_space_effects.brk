@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn4pbcoubhbdr"]
+
+[ext_resource type="Script" uid="uid://dg0gv8ylrgaf8" path="res://addons/brisklance/self/autoloads/screen_space_effects/circular_cover/circular_cover.gd" id="1_nimhi"]
+[ext_resource type="Shader" uid="uid://bjpeqxjd0l8rr" path="res://addons/brisklance/self/autoloads/screen_space_effects/circular_cover/circular_cover.gdshader" id="2_equ2l"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+resource_local_to_scene = true
+shader = ExtResource("2_equ2l")
+shader_parameter/cover_center = Vector2(0.5, 0.5)
+shader_parameter/cover_size = 1.0
+shader_parameter/cover_scatter_intensity = 1.0
+shader_parameter/cover_color = Color(0, 0, 0, 1)
+
+[node name="CircularCover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nimhi")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+scale = Vector2(5, 5)
+copy_mode = 2
+
+[node name="Effect" type="ColorRect" parent="."]
+material = SubResource("1")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0

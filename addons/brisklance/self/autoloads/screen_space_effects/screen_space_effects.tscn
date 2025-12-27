@@ -5,12 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://cn4pbcoubhbdr" path="res://addons/brisklance/self/autoloads/screen_space_effects/circular_cover/circular_cover.tscn" id="3_q3kge"]
 [ext_resource type="Script" uid="uid://25fiw3u2e24x" path="res://addons/brisklance/self/autoloads/screen_space_effects/distortion/distortions.gd" id="5_45p04"]
 
-[node name="ScreenSpaceEffects" type="CanvasLayer" node_paths=PackedStringArray("node_blur", "node_cover", "node_distortions")]
+[node name="ScreenSpaceEffects" type="CanvasLayer" node_paths=PackedStringArray("node_blur", "node_cover", "node_distortions", "node_mouse_blocker")]
 layer = 100
 script = ExtResource("1_0s5h6")
 node_blur = NodePath("CircularBlur")
 node_cover = NodePath("CircularCover")
 node_distortions = NodePath("Distortions")
+node_mouse_blocker = NodePath("MouseBlocker")
 
 [node name="CircularBlur" parent="." instance=ExtResource("2_nujk0")]
 

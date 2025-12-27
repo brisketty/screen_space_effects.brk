@@ -4,8 +4,20 @@ extends CanvasLayer
 @export var node_blur : CircularBlur_ScreenSpaceEffects_BRK
 @export var node_cover : CircularCover_ScreenSpaceEffects_BRK
 @export var node_distortions : Distortions_ScreenSpaceEffects_BRK
+@export var node_mouse_blocker : Control
+
+var is_blocking_mouse := false :
+	set(p_value):
+		is_blocking_mouse = p_value
+		update_from_is_blocking_mouse()
 
 var is_transitioning := false
+
+func update_from_is_blocking_mouse() -> void:
+	node_mouse_blocker.mouse_filter = (
+		Control.MouseFilter.MOUSE_FILTER_STOP if is_blocking_mouse else 
+		Control.MouseFilter.MOUSE_FILTER_IGNORE
+	)
 
 func transition_scene_to_packed(p_packed_scene: PackedScene, p_duration := 1.0) -> void:
 	if is_transitioning: return
@@ -22,3 +34,6 @@ func transition_scene_to_packed(p_packed_scene: PackedScene, p_duration := 1.0) 
 
 func transition_scene_to_file(p_path : String, p_duration := 1.0) -> void:
 	await transition_scene_to_packed(load(p_path), p_duration)
+
+func _ready() -> void:
+	update_from_is_blocking_mouse()

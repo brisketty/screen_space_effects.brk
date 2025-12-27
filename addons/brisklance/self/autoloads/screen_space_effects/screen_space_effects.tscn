@@ -18,3 +18,12 @@ node_distortions = NodePath("Distortions")
 
 [node name="Distortions" type="Node" parent="."]
 script = ExtResource("5_45p04")
+
+[node name="MouseBlocker" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

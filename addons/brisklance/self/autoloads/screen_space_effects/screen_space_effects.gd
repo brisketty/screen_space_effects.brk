@@ -22,6 +22,7 @@ func update_from_is_blocking_mouse() -> void:
 func transition_scene_to_packed(p_packed_scene: PackedScene, p_duration := 1.0) -> void:
 	if is_transitioning: return
 	is_transitioning = true
+	is_blocking_mouse = true
 	
 	var original_cover_size := node_cover.cover_size
 	var original_cover_scatter_intensity := node_cover.cover_scatter_intensity
@@ -30,6 +31,7 @@ func transition_scene_to_packed(p_packed_scene: PackedScene, p_duration := 1.0) 
 	await get_tree().scene_changed
 	await node_cover.cover(original_cover_scatter_intensity, original_cover_size, p_duration / 2)
 	
+	is_blocking_mouse = false
 	is_transitioning = false
 
 func transition_scene_to_file(p_path : String, p_duration := 1.0) -> void:
